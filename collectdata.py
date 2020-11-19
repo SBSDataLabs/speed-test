@@ -34,15 +34,19 @@ def run_speed_test():
     return s.results.dict()
 
 #%% 
-
+i = 0
 while True : 
     
-    
+    print(f"{i} : gathering results,",end = '')
     results = run_speed_test()
     data = json.dumps(results)
     
+    print(" writing to file, ", end = '')
     with open('/Users/simonsmith/GitProjects/speedtest/speed_test.csv', 'a') as file:
         
         file.write(data + "\n")
-        
+    
+    print(" going to sleep.")
     time.sleep(60)
+
+    i+=1
