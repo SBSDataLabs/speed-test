@@ -10,6 +10,7 @@ Created on Thu Nov 19 15:43:14 2020
 
 import speedtest 
 import json
+import time
 
 #%% https://github.com/sivel/speedtest-cli/wiki
 
@@ -33,10 +34,15 @@ def run_speed_test():
     return s.results.dict()
 
 #%% 
-    
-results = run_speed_test()
-data = json.dumps(results)
 
-with open('Users/simonsmith/Desktop/speed_test.csv', 'a') as file:
+while True : 
     
-    file.write(data + "\n")
+    
+    results = run_speed_test()
+    data = json.dumps(results)
+    
+    with open('/Users/simonsmith/GitProjects/speedtest/speed_test.csv', 'a') as file:
+        
+        file.write(data + "\n")
+        
+    time.sleep(60)
